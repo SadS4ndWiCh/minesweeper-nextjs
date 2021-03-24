@@ -17,7 +17,9 @@ interface BoardCellProps {
 export function BoardCell({ isRevealed, isFlagged, isBomb, neighborsCount, cellIndex, onClick, onRightClick }: BoardCellProps) {
   const dataCellType = !isRevealed && !isFlagged ? 'block' :
                        !isRevealed && isFlagged ? 'flagged' :
-                       isRevealed && isBomb ? 'mine' : 'neighbor'
+                       isRevealed && isBomb ? 'mine' : 'neighbor';
+
+  const neuClass = dataCellType === 'block' || dataCellType === 'flagged' ? 'neu-flat' : 'neu-pressed';
 
   return (
     <div
@@ -26,7 +28,7 @@ export function BoardCell({ isRevealed, isFlagged, isBomb, neighborsCount, cellI
 
       data-cell-type={dataCellType}
 
-      className={styles.boardCellContainer}
+      className={`${styles.boardCellContainer} ${neuClass}`}
     >
       { !isRevealed && !isFlagged && (
         <span />
