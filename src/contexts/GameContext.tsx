@@ -20,9 +20,15 @@ interface IBoardCell {
 interface GameContextData {
   configurations: IGameConfigurations,
   boardCells: IBoardCell[],
+  isGameRunning: boolean;
 
   init: () => void;
   setBoardCells: Dispatch<SetStateAction<IBoardCell[]>>;
+  remainingBombsCount: () => number;
+  remainingFlagsCount: () => number;
+  start: () => void;
+  finish: () => void;
+  reset: () => void;
 }
 
 interface GameProviderProps {
@@ -38,6 +44,7 @@ export function GameProvider({ children }: GameProviderProps) {
     totalBombs: 15,
   });
   const [boardCells, setBoardCells] = useState<IBoardCell[]>(undefined);
+  const [isGameRunning, setIsGameRunning] = useState(false);
 
   function init() {
     let board = createBoard(configurations.width, configurations.heigth, configurations.totalBombs);
@@ -45,12 +52,45 @@ export function GameProvider({ children }: GameProviderProps) {
     setBoardCells(board);
   }
 
+  function start() {
+    setIsGameRunning(true);
+  }
+
+  function finish() {
+    setIsGameRunning(false);
+  }
+
+  function reset() {
+    finish();
+    init();
+  }
+
+  function remainingBombsCount() {
+    const board: IBoardCell[] = JSON.parse(JSON.stringify(boardCells));
+    const remainingBombs = board.filter(cell => cell.isBomb && !cell.isFlagged);
+
+    return remainingBombs.length
+  }
+
+  function remainingFlagsCount() {
+    const board: IBoardCell[] = JSON.parse(JSON.stringify(boardCells));
+    const remainingFlags = board.filter(cell => cell.isFlagged);
+
+    return configurations.totalBombs - remainingFlags.length
+  }
+
   return (
     <GameContext.Provider value={{
       configurations,
       boardCells,
+      isGameRunning,
       init,
-      setBoardCells
+      setBoardCells,
+      remainingBombsCount,
+      remainingFlagsCount,
+      start,
+      finish,
+      reset,
     }}>
       { children }
     </GameContext.Provider>
