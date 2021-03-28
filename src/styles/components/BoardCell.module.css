@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   
-  height: 50px !important;
+  height: 3.125rem !important;
 
   padding: 10px;
 
@@ -15,20 +15,24 @@
   color: #fff;
   background-color: #121212;
 
-  box-shadow:
-    2px 2px 3px 0 rgba(0, 0, 0, 0.6), 
-    -2px -2px 3px 0 rgba(255, 255, 255, 0.1);
-
   cursor: pointer;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .boardCellContainer:hover {
   filter: brightness(.9);
 }
 
-.boardCellContainer:not([data-cell-type='block']):not([data-cell-type='flagged']) {
-  box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2),
-    inset -2px -2px 2px 0 rgba(255, 255, 255, 0.1);
+.boardCellContainer[data-disabled="true"] {
+  pointer-events: none;
+  opacity: .8;
 }
 
 .boardCellContainer span[data-neighbors-count='1'] {
