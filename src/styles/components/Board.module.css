@@ -1,0 +1,64 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boardContainer header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 325px;
+
+  padding: 2em 1em 0;
+
+  font-size: 1.2em;
+  color: white;
+}
+
+.boardContainer header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boardContainer header > h2 {
+  font-size: 1em;
+}
+
+.boardContainer header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  margin: 0 1em;
+
+  border: none;
+  border-radius: 50%;
+
+  line-height: 0;
+  font-size: 1.5em;
+  
+  cursor: pointer;
+
+  transition: text-shadow .2s;
+}
+
+.boardContainer main {
+  display: grid;
+  max-width: 100vw;
+
+  padding: 1em;
+  padding-right: 1em;
+
+  overflow-x: auto;
+}
+
+.boardContainer main > div {
+  height: 30px;
+}
