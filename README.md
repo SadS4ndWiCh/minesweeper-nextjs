@@ -27,10 +27,10 @@ Um simples Campo Minado para me desafiar a faze-lo
 ## 💾 Instalação
 
 Clone o repositório e vá até o diretório do projeto:
-`git clone https://github.com/SadS4ndWiCh/minesweeper-nextjs.git && cd minesweeper-nextjs`
+```git clone https://github.com/SadS4ndWiCh/minesweeper-nextjs.git && cd minesweeper-nextjs```
 
 Instale todos os pacotes:
-`yarn install`
+```yarn install```
 
 E já pode inicializar:
-`yarn dev`
+```yarn dev```
