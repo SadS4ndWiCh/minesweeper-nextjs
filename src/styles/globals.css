@@ -1,5 +1,14 @@
 :root {
-  
+  --blue: #0ab2ff;
+  --green: #40f175;
+  --red: #ff362f;
+  --pink: #d220ff;
+  --yellow: #fcff40;
+  --dark-purple: #4333d8;
+  --orange: #eea84c;
+  --gray: #3b3b3b;
+  --white: #fff;
+  --dark-gray: #121212;
 }
 
 html,
