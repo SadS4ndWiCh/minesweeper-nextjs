@@ -4,7 +4,8 @@
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a> | 
-  <a href="#-projeto">Projeto</a>
+  <a href="#-projeto">Projeto</a> |
+  <a href="#-instalação">Instalação</a>
 
 </p>
 
