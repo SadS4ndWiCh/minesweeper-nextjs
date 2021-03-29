@@ -1,5 +1,3 @@
-import { Sprite } from './Sprite';
-
 import styles from '@styles/components/BoardCell.module.css';
 
 interface BoardCellProps {
@@ -7,14 +5,15 @@ interface BoardCellProps {
   neighborsCount: number;
   isFlagged: boolean;
   isBomb: boolean;
-
   cellIndex: number;
+  
+  disabled: boolean;
 
-  onClick?: () => any;
+  onClick?: (e) => unknown;
   onRightClick?: (e, i) => any;
 }
 
-export function BoardCell({ isRevealed, isFlagged, isBomb, neighborsCount, cellIndex, onClick, onRightClick }: BoardCellProps) {
+export function BoardCell({ isRevealed, isFlagged, isBomb, neighborsCount, cellIndex, disabled, onClick, onRightClick }: BoardCellProps) {
   const dataCellType = !isRevealed && !isFlagged ? 'block' :
                        !isRevealed && isFlagged ? 'flagged' :
                        isRevealed && isBomb ? 'mine' : 'neighbor';
@@ -27,6 +26,9 @@ export function BoardCell({ isRevealed, isFlagged, isBomb, neighborsCount, cellI
       onContextMenu={(e) => onRightClick(e, cellIndex)}
 
       data-cell-type={dataCellType}
+      data-cell-index={cellIndex}
+
+      data-disabled={disabled}
 
       className={`${styles.boardCellContainer} ${neuClass}`}
     >
