@@ -11,6 +11,7 @@ import { TimerContext } from '@contexts/TimerContext';
 import { createBoard, deepCopyBoard } from '@utils/board';
 
 import styles from '@styles/components/Board.module.css';
+import { DifficultyChoice } from './DifficultyChoice';
 
 interface IBoardCell {
   isRevealed: boolean;
@@ -46,7 +47,11 @@ export function Board() {
   }, []);
 
   // Cria outro quadro quando as configurações mudam
-  /* useEffect(() => {}, [configurations]) */
+  useEffect(() => {
+    if(board) {
+      _handleReset();
+    }
+  }, [configurations])
 
   // Cria um novo quadro com as configurações definidas e já
   // atualiza o estado do quadro
@@ -195,6 +200,8 @@ export function Board() {
           <Timer />
         </div>
 
+        <DifficultyChoice />
+
         <h2>
           { isGameOver !== undefined && isGameOver && 'Você perdeu!' }
           { isGameOver !== undefined && !isGameOver && 'Você venceu!' }
@@ -202,7 +209,7 @@ export function Board() {
       </header>
 
       <main style={{
-        gridTemplateColumns: `repeat(${configurations.width}, 3.125em)`,
+        gridTemplateColumns: `repeat(${configurations.width}, 2em)`,
         gap: '10px'
       }}>
         { !board  && <h1>Loading...</h1>}
