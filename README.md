@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://i.gyazo.com/547aea7487d02a9a3fcdb79ab9fa5dea.png" alt="Campo Minado" width="100%" />
+  <img src="https://i.gyazo.com/8a7cbd079094cd035c8d70027cd97b5b.png" alt="Campo Minado" width="100%" />
 </p>
 
 ---
