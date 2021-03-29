@@ -1,0 +1,26 @@
+.difficultyChoiceContainer {
+  margin-top: 1em;
+
+  border-radius: 4px;  
+}
+
+.difficultyChoiceContainer select {
+  width: 100%;
+  min-width: 10em;
+
+  margin: 0;
+  padding: .5em;
+
+  border: none;
+
+  font-size: .8em;
+  background-color: transparent;
+
+  color: white;
+
+  outline: none;
+}
+
+.difficultyChoiceContainer select option {
+  background-color: var(--dark-gray);
+}
