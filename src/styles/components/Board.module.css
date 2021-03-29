@@ -15,7 +15,7 @@
   padding: 2em 1em 0;
 
   font-size: 1.2em;
-  color: white;
+  color: var(--white);
 }
 
 .boardContainer header > div {
@@ -60,5 +60,5 @@
 }
 
 .boardContainer main > div {
-  height: 1,875em;
+  height: 1.875em;
 }

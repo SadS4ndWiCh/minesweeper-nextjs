@@ -3,17 +3,17 @@
   align-items: center;
   justify-content: center;
   
-  height: 2.604em !important;
+  height: 2em !important;
 
   padding: 10px;
 
   border-radius: 4px;
 
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
 
-  color: #fff;
-  background-color: #121212;
+  color: var(--white);
+  background-color: var(--dark-gray);
 
   cursor: pointer;
 
@@ -36,28 +36,28 @@
 }
 
 .boardCellContainer span[data-neighbors-count='1'] {
-  color: #0ab2ff;
+  color: var(--blue);
 }
 .boardCellContainer span[data-neighbors-count='2'] {
-  color: #40f175;
+  color: var(--green);
 }
 .boardCellContainer span[data-neighbors-count='3'] {
-  color: #ff362f;
+  color: var(--red);
 }
 .boardCellContainer span[data-neighbors-count='4'] {
-  color: #d220ff;
+  color: var(--pink);
 }
 .boardCellContainer span[data-neighbors-count='5'] {
-  color: #fcff40;
+  color: var(--yellow);
 }
 .boardCellContainer span[data-neighbors-count='6'] {
-  color: #4333d8;
+  color: var(--dark-purple);
 }
 .boardCellContainer span[data-neighbors-count='7'] {
-  color: #eea84c;
+  color: var(--orange);
 }
 .boardCellContainer span[data-neighbors-count='8'] {
-  color: #3b3b3b;
+  color: var(--gray);
 }
 
 .boardCellContainer span[data-neighbors-count] {
