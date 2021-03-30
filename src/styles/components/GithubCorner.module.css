@@ -1,0 +1,14 @@
+.githubCornerContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  z-index: 20;
+}
+
+.githubCornerContainer svg {
+  fill: var(--orange);
+  color: var(--dark-gray);
+  
+  cursor: pointer;
+}
