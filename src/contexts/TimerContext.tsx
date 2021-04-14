@@ -1,8 +1,9 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { ACTIONS } from "@utils/game";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { GameContext } from "./GameContext";
 
 interface TimerContextData {
   timerCount: number;
-  isActive: boolean;
   
   resetTimer: () => void;
   startTimer: () => void;
@@ -19,38 +20,38 @@ export const TimerContext = createContext({} as TimerContextData);
 let timerTimeout: NodeJS.Timeout;
 
 export function TimerProvider({ children }: TimerProviderProps) {
+  const { gameState, gameDispatch } = useContext(GameContext);
+
   const [timerCount, setTimerCount] = useState(0);
-  const [isActive, setIsActive] = useState(false);
 
   function resetTimer() {
     clearTimeout(timerTimeout)
     setTimerCount(0);
-    setIsActive(false);
+    gameDispatch({ type: ACTIONS.CHANGE_TIMER_STATE, payload: { timerState: false } });
   }
 
   function stopTimer() {
     clearTimeout(timerTimeout);
-    setIsActive(false);
+    gameDispatch({ type: ACTIONS.CHANGE_TIMER_STATE, payload: { timerState: false } });
   }
-
+  
   function startTimer() {
-    setIsActive(true);
+    gameDispatch({ type: ACTIONS.CHANGE_TIMER_STATE, payload: { timerState: true } });
   }
 
   useEffect(() => {
-    if(isActive) {
+    if(gameState.isTimerActive) {
       timerTimeout = setTimeout(() => {
-        if(isActive) setTimerCount(timerCount + 1);
+        if(gameState.isTimerActive) setTimerCount(timerCount + 1);
       }, 1000);
     }
 
 
-  }, [isActive, timerCount]);
+  }, [gameState.isTimerActive, timerCount]);
 
   return (
     <TimerContext.Provider value={{
       timerCount,
-      isActive,
 
       resetTimer,
       startTimer,
