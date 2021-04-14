@@ -1,17 +1,20 @@
-import { ChangeEvent, useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 
 import { GameContext } from '@contexts/GameContext';
 
+import { ACTIONS } from '@utils/game';
+
 import styles from '@styles/components/DifficultyChoice.module.css';
 
-type Difficulty = 'easy' | 'medium' | 'hard';
-
 export function DifficultyChoice() {
-  const { changeDifficulty, configurations } = useContext(GameContext);
+  const { gameState, gameDispatch } = useContext(GameContext);
   const selectInputRef = useRef<HTMLSelectElement>();
 
   function handleChangeDifficulty() {
-    changeDifficulty(selectInputRef.current.value as Difficulty);
+    gameDispatch({
+      type: ACTIONS.CHANGE_DIFFICULTY,
+      payload: { difficulty: selectInputRef.current.value }
+    });
   }
 
   return (
@@ -21,7 +24,7 @@ export function DifficultyChoice() {
 
         name="difficulties"
         id="difficulties"
-        defaultValue={configurations.difficulty}
+        defaultValue={gameState.configurations.difficulty}
         
         onChange={handleChangeDifficulty}
       >
